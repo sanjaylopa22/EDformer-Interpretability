@@ -1,0 +1,13 @@
+matplotlib
+numpy
+pandas
+# psycopg2
+pyunpack
+reformer-pytorch
+scikit-learn
+sympy
+time-interpret # ==0.3.0
+captum
+tqdm
+einops
+# install pytorch and cuda following readme
