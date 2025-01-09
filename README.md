@@ -46,7 +46,6 @@ This repository currently supports the following models:
 
 Use the [run.py](/run.py) script to train and test the time series models. Check the [scripts](/scripts/) and [slurm](/slurm/) folder to see sample scripts. Make sure you have the datasets downloaded in the `dataset` folder following the `Datasets` section. Following is a sample code to train the electricity dataset using the DLinear model. To test an already trained model, just remove the `--train` parameter.
 
-```
 python run.py \
   --task_name long_term_forecast \
   --train \
@@ -57,8 +56,25 @@ python run.py \
   --seq_len 96 \
   --label_len 12 \
   --pred_len 24 \
-  --n_features 1
-```
+  --n_features 1 \
+  --dec_out 1 \
+   --itr_no 1
+
+# feature_ablation occlusion augmented_occlusion feature_permutation
+# deep_lift gradient_shap integrated_gradients -- only for transformer models
+python interpret.py \
+  --task_name long_term_forecast \
+  --explainers feature_ablation gradient_shap\
+  --root_path ./dataset/electricity/ \
+  --data_path electricity.csv \
+  --model EDformer \
+  --features S \
+  --seq_len 96 \
+  --label_len 12 \
+  --pred_len 24 \
+  --n_features 1 \
+  --dec_out 1 \
+   --itr_no 1
 
 ## Interpret
 
@@ -140,10 +156,17 @@ pip install torch==2.2 --index-url https://download.pytorch.org/whl/cu118
 
 ## References
 <!-- https://docs.github.com/en/enterprise-cloud@latest/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#footnotes -->
-[^1]: https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014.
 
-[^2]: https://pems.dot.ca.gov/.
+[^1]: https://arxiv.org/abs/2412.12227
 
-[^3]: Alistair EW Johnson, Tom J Pollard, Lu Shen, Li-wei H Lehman, Mengling Feng, Mohammad Ghassemi, Benjamin Moody, Peter Szolovits, Leo Anthony Celi, and Roger G Mark. MIMIC-III, a freely accessible critical care database. Scientific Data, 3, 2016.
+# Citation
+If you find this repo useful, please cite our paper.
 
-[^4]: Sana Tonekaboni, Shalmali Joshi, Kieran Campbell, David K Duvenaud, and Anna Goldenberg. What went wrong and when? Instance-wise feature importance for time-series black-box models. In Neural Information Processing Systems, 2020.
+@article{chakraborty2024edformer, title={EDformer: Embedded Decomposition Transformer for Interpretable Multivariate Time Series Predictions}, author={Chakraborty, Sanjay and Delibasoglu, Ibrahim and Heintz, Fredrik}, journal={arXiv preprint arXiv:2412.12227}, year={2024} }
+
+# Contact
+If you have any questions or suggestions, feel free to contact our maintenance team:
+
+Current:
+
+Sanjay Chakraborty (Postdoc, sanjay.chakraborty@liu.se) Ibrahim Delibasoglu (Postdoc, ibrahim.delibasoglu@liu.se)
