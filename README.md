@@ -1,4 +1,4 @@
-# Interpreting Multi-Horizon Time Series Deep Learning Models
+# Interpreting Multi-Horizon Time Series Model EDformer
 
 Interpreting the model's behavior is important in understanding decision-making in practice. However, explaining complex time series forecasting models faces challenges due to temporal dependencies between subsequent time steps and the varying importance of input features over time. Many time series forecasting models use input context with a look-back window for better prediction performance. However, the existing studies (1) do not consider the temporal dependencies among the feature vectors in the input window and (2) separately consider the time dimension that the feature dimension when calculating the importance scores. In this work, we propose a novel **Windowed Temporal Saliency Rescaling** method to address these issues. 
 
@@ -78,7 +78,7 @@ python interpret.py \
 
 ## Interpret
 
-Use the [interpret.py](/interpret.py) script to interpret a trained model. Check the [scripts](/scripts/) and [slurm](/slurm/) folder to see more sample scripts. Following is a sample code to interpret the `iTransformer` model trained on the electricity dataset using using some of the interpretation methods. This evaluates the 1st iteration among the default 3 in the result folder.
+Use the [interpret.py](/interpret.py) script to interpret a trained model. Check the [scripts](/scripts/) and [slurm](/slurm/) Folders to see more sample scripts. Following is a sample code to interpret the `iTransformer` model trained on the electricity dataset using some of the interpretation methods. This evaluates the 1st iteration among the default 3 in the result folder.
 
 ```
 python interpret.py \
@@ -97,7 +97,7 @@ python interpret.py \
 
 ## Datasets
 
-The datasets are available at this [Google Drive](https://drive.google.com/drive/folders/13Cg1KYOlzM5C7K8gK8NfC-F3EYxkM3D2?usp=sharing) in the long-term-forecast folder. Download and keep them in the `dataset` folder here. Only `mimic-iii` dataset is private and hence must be approved to get access from [PhysioNet](https://mimic.mit.edu/docs/gettingstarted/).
+The datasets are available at this [Google Drive](https://drive.google.com/drive/folders/13Cg1KYOlzM5C7K8gK8NfC-F3EYxkM3D2?usp=sharing) in the long-term-forecast folder. 
 
 ### Electricity
 
